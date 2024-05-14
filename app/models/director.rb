@@ -13,6 +13,9 @@
 class Director < ApplicationRecord
   validates(:name, presence: true)
 
+  belongs_to(:director)
+  has_many(:filmography, class_name: "Movie", foreign_key: "director_id")
+
   def filmography
     key = self.id
 
